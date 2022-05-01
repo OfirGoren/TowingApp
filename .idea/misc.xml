@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/drawable/switch_selector.xml" value="0.2545" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_location.xml" value="0.24027362120564344" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_main.xml" value="0.2234375" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_towing.xml" value="0.20906370243693886" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_login_fragmeent.xml" value="0.19" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_map.xml" value="0.25" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_welcome.xml" value="0.20906370243693886" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/pop_up_request_towing.xml" value="0.19666524155622062" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

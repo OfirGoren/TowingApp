@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.SignUpFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Sign Up"
+        android:textColor="@color/orange"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signUp_fullName"
+            style="@style/MyOutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_name"
+            android:scrollbars="vertical"
+            android:textColorHint="@color/orange"
+            android:theme="@style/MyTextInputLayoutAppearance"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                android:textColor="@color/orange" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signUp_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/email"
+            android:textColorHint="@color/orange"
+            android:theme="@style/MyTextInputLayoutAppearance"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signUp_EDT_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/password"
+            android:textColorHint="@color/orange"
+            android:theme="@style/MyTextInputLayoutAppearance"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ProgressBar
+        android:id="@+id/signUp_PRB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/myProgressBar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/signUp_Btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+        app:layout_constraintVertical_bias="0.591" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUp_Btn"
+        style="@style/MyBtnCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/orange"
+        android:padding="20dp"
+        android:text="@string/Register"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+        app:layout_constraintVertical_bias="0.879" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

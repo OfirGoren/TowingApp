@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.WelcomeFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/welcome_BTN_logIn"
+            style="@style/MyBtnCustom"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_above="@id/signUp_Btn"
+            android:backgroundTint="@color/orange"
+            android:padding="20dp"
+            android:text="@string/login" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/welcome_Btn_signUp"
+            style="@style/MyBtnCustom"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/orange"
+            android:padding="20dp"
+            android:text="@string/SignUp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

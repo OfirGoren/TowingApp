@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">TowingApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="Register">Register</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="require_name">An Name is required</string>
+    <string name="email_required">An email is required</string>
+    <string name="password_required">An Password is required</string>
+    <string name="password_required_digits">"Must have at least a \n6-character password"</string>
+    <string name="LogIn">Log In</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="msgAgreeYourLocation">"To see the nearest garages you must confirm to arrive at your place."</string>
+    <string name="msgAgreeMoveToSetting">"Switch to settings to confirm your location?"</string>
+    <string name="permission_rationale">Location permission is needed for core functionality. Please Enable it</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core functionality. Enable it manually</string>
+    <string name="settings">Settings</string>
+    <string name="AppInPprogress">App in progress</string>
+    <string name="content">Content</string>
+    <string name="service">Service</string>
+    <string name="log_is_failed_try_again">Log Is Failed Try Again</string>
+    <string name="needToVerify">You Need To Verfiy The Email</string>
+</resources>
