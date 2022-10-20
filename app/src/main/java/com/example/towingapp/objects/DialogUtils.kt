@@ -8,11 +8,11 @@ import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-
 class DialogUtils {
 
 
     var dialog: AlertDialog? = null
+
     enum class ButtonPressed {
         Cancel, Continue
     }
@@ -27,7 +27,7 @@ class DialogUtils {
         styleDialogId: Int,
         responseCallBack: ResponseCallBack
     ) {
-     dialog =  MaterialAlertDialogBuilder(context, styleDialogId)
+        dialog = MaterialAlertDialogBuilder(context, styleDialogId)
             .setMessage(msg)
             .setNegativeButton(ButtonPressed.Cancel.name) { dialog, which ->
                 responseCallBack.whichButtonIsPressed(ButtonPressed.Cancel)
@@ -37,9 +37,7 @@ class DialogUtils {
                 responseCallBack.whichButtonIsPressed(ButtonPressed.Continue)
 
 
-
             }.show()
-
 
 
     }

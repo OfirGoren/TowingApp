@@ -22,7 +22,7 @@ class FusedLocationHandler(val context: Context) {
 
     private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
     private lateinit var getLastLocationCallBack: GetLastLocationCallBack
-    private var locationResult:LocationCallback? = null
+    private var locationResult: LocationCallback? = null
 
 
     fun initGetLastLocationCallBack(getLastLocationCallBack: GetLastLocationCallBack) {
@@ -46,21 +46,7 @@ class FusedLocationHandler(val context: Context) {
         )
 
 
-//        task.addOnSuccessListener {
-//            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-//                if(location != null) {
-//                    Log.d("FDsfdsdsf" , "SFdsa" + location.latitude + " " + location.longitude )
-//
-//                    getLastLocationCallBack.getLastLocationCallBack(
-//                        location.latitude,
-//                        location.longitude
-//
-//                    )
-//                }
-//            }
-//
-//
-//        }
+
 
         task.addOnFailureListener { exception ->
             if (exception is ResolvableApiException) {
@@ -84,7 +70,7 @@ class FusedLocationHandler(val context: Context) {
             p0 ?: return
             for (location in p0.locations) {
                 if (location != null) {
-                    Log.d("FDsfdsdsf", "SFdsa" + location.latitude + " " + location.longitude)
+
 
                     getLastLocationCallBack.getLastLocationCallBack(
                         location.latitude,

@@ -9,7 +9,7 @@ class WindowUtils {
 
     companion object {
 
-         fun closeKeyBoardView(activity:Activity, view: View?) {
+        fun closeKeyBoardView(activity: Activity, view: View?) {
             val imm =
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view?.applicationWindowToken, 0)

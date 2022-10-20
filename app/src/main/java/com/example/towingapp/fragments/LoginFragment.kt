@@ -18,15 +18,14 @@ import com.google.firebase.ktx.Firebase
 class LoginFragment : Fragment() {
 
 
-
-    private lateinit var binding:FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding
     private lateinit var authSignUp: AuthSignUp
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater , container , false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         initValues()
 
         binding.loginBtn.setOnClickListener(logInClick)
@@ -66,6 +65,7 @@ class LoginFragment : Fragment() {
         authSignUp.logInUser(requireActivity(), email, password, logInCallBack)
 
     }
+
     private fun setVisibilityProgressAndErrorText(
         visibilityProgressBar: Int,
         visibilityErrorMsg: Int
@@ -108,6 +108,7 @@ class LoginFragment : Fragment() {
         }
 
     }
+
     private fun openTowingActivity() {
         val intent = Intent(activity, TowingActivity::class.java)
         startActivity(intent)

@@ -21,11 +21,14 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.towingapp.R
 import com.example.towingapp.Services.LocationService
 import com.example.towingapp.Utils.SharedPref
+import com.example.towingapp.activitiy.MainActivity
 import com.example.towingapp.activitiy.PermissionActivity
 import com.example.towingapp.databinding.FragmentMapBinding
 import com.example.towingapp.databinding.PopUpRequestTowingBinding
 import com.example.towingapp.objects.*
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 
@@ -40,10 +43,9 @@ class MapFragment : Fragment() {
     private lateinit var dialogUtils: DialogUtils
     private var towingDetailProfile: User? = null
     private var userDetail: UserDetailForTowing? = null
-    private var towingProfileWithLocation:UserDetailForTowing?= null
+    private var towingProfileWithLocation: UserDetailForTowing? = null
     private val fireStoreHandler = FireStoreHandler()
     private var towingIsBusy = false
-
 
 
     override fun onCreateView(
@@ -55,12 +57,12 @@ class MapFragment : Fragment() {
         //  activity?.theme?.applyStyle(R.style.myThemeActivity, true);
 
         initValues()
-        Log.d("DFSfsdfsd" , "DSfdssd")
+
         initListeners()
-        createPopUpDialog()
         initMap()
         isNeedToShowArrivedBtn()
-     //   shutDownReceiver()
+        createPopUpDialog()
+        //   shutDownReceiver()
         binding.mapSwitchLocation.isChecked = true
         fireStoreHandler.listenerUserTowingRequest(getNewTowingRequest)
 
@@ -71,13 +73,14 @@ class MapFragment : Fragment() {
 
     private fun isNeedToShowArrivedBtn() {
 
-            val middleDrive:Boolean = SharedPref.getInstance().getBoolean(MIDDLE_DRIVE , false)
-        Log.d("SDGfdfs" , "SDFfdsfsd " + middleDrive)
-        if(middleDrive) {
+        val middleDrive: Boolean = SharedPref.getInstance().getBoolean(MIDDLE_DRIVE, false)
+
+        if (middleDrive) {
             binding.mapBTNArrived.visibility = View.VISIBLE
 
-            towingProfileWithLocation = SharedPref.getInstance().getObject(DETAIL_OBJECT , UserDetailForTowing::class.java)
-            Log.d("fdhhdfhg" , "DFSsd" + towingProfileWithLocation)
+            towingProfileWithLocation =
+                SharedPref.getInstance().getObject(DETAIL_OBJECT, UserDetailForTowing::class.java)
+
         }
     }
 
@@ -85,9 +88,10 @@ class MapFragment : Fragment() {
         super.onStart()
 
     }
+
     companion object {
 
-         const val DESTROY_APP = "DestroyApp"
+        const val DESTROY_APP = "DestroyApp"
         const val DETAIL_OBJECT = "object"
         const val MIDDLE_DRIVE = "MIDDLE_DRIVE"
 
@@ -103,11 +107,31 @@ class MapFragment : Fragment() {
     private fun initListeners() {
         initMapSwitchListener()
         initBtnArrivedListener()
+        initListenersLogOut()
+    }
+
+    private fun initListenersLogOut() {
+        binding.mapLogOut.setOnClickListener {
+            Firebase.auth.signOut()
+            openWelcomeFragment()
+        }
+    }
+
+    private fun openWelcomeFragment() {
+
+        val intent = Intent(activity, MainActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+        if (binding.mapSwitchLocation.isChecked) {
+            binding.mapSwitchLocation.performClick()
+        }
+
     }
 
 
     private fun initBtnArrivedListener() {
         binding.mapBTNArrived.setOnClickListener {
+            dialog.dismiss()
             towingDetailProfile = null
             clearSharedPref()
             fireStoreHandler.deleteTowingFromUser(towingProfileWithLocation)
@@ -121,20 +145,14 @@ class MapFragment : Fragment() {
     }
 
 
-
-
     private val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val location = intent.getParcelableExtra<Location>("EXTRA_LOCATION")
 
 
             if (location != null) {
-                Log.d("dfssdffsddfssf", "FDSfdsfds" + towingDetailProfile + " " + location?.latitude + " " + location?.longitude)
-                towingMapUserLocation.getLastLocationCallBack(location.latitude , location.longitude)
-//                if (towingDetailProfile != null) {
-//                 //   Log.d("DFSdsffds", "FDSfdsfds" + towingDetailProfile + " " + location.latitude + " " + location.longitude)
-//                    sendDetailToUser(location)
-//                }
+
+                towingMapUserLocation.getLastLocationCallBack(location.latitude, location.longitude)
 
 
             }
@@ -149,17 +167,16 @@ class MapFragment : Fragment() {
     }
 
 
-
-   private fun getDetailToUser(): UserDetailForTowing? {
-       towingProfileWithLocation = UserDetailForTowing()
-       towingProfileWithLocation?.name = towingDetailProfile?.name
-       towingProfileWithLocation?.imageUri = towingDetailProfile?.imageUri
-       towingProfileWithLocation?.latitude = 0.0
-       towingProfileWithLocation?.longitude = 0.0
-       towingProfileWithLocation?.Userid = userDetail?.Userid
-       towingProfileWithLocation?.requestId = towingDetailProfile?.id
-       return towingProfileWithLocation
-   }
+    private fun getDetailToUser(): UserDetailForTowing? {
+        towingProfileWithLocation = UserDetailForTowing()
+        towingProfileWithLocation?.name = towingDetailProfile?.name
+        towingProfileWithLocation?.imageUri = towingDetailProfile?.imageUri
+        towingProfileWithLocation?.latitude = 0.0
+        towingProfileWithLocation?.longitude = 0.0
+        towingProfileWithLocation?.Userid = userDetail?.Userid
+        towingProfileWithLocation?.requestId = System.currentTimeMillis().toString()
+        return towingProfileWithLocation
+    }
 
     private fun startServiceLocation() {
         actionToService(LocationService.START_LOCATION_SERVICE)
@@ -178,10 +195,6 @@ class MapFragment : Fragment() {
         startForegroundService(requireContext(), startIntent)
 
 
-
-//            // or
-//        context?.let { startForegroundService(it, startIntent) };
-
     }
 
 
@@ -194,35 +207,34 @@ class MapFragment : Fragment() {
         super.onStop()
         context?.let { LocalBroadcastManager.getInstance(it).unregisterReceiver(myReceiver) }
     }
-    private fun inMiddleOfDrive() {
-        if(binding.mapBTNArrived.isVisible) {
-            SharedPref.getInstance().putBoolean(MIDDLE_DRIVE , true)
-            Log.d("fsdasasaqasa" , "SDFfsdsfd " + getDetailToUser())
-            SharedPref.getInstance().saveObject(DETAIL_OBJECT ,  getDetailToUser())
-        }else {
-            SharedPref.getInstance().putBoolean(MIDDLE_DRIVE , false)
+
+    private fun saveObjectShardPerf(detailUser: UserDetailForTowing?) {
+        if (binding.mapBTNArrived.isVisible) {
+            SharedPref.getInstance().putBoolean(MIDDLE_DRIVE, true)
+            SharedPref.getInstance().saveObject(DETAIL_OBJECT, detailUser)
+        } else {
+            SharedPref.getInstance().putBoolean(MIDDLE_DRIVE, false)
         }
     }
 
     override fun onDestroy() {
 
-         //   fireStoreHandler.shoutDownListenerUserTowingRequest()
-            Log.d("fdsfdfdsfsdfsd", "FDSfdsfds")
+
         super.onDestroy()
 
 
     }
+
     override fun onResume() {
         super.onResume()
 
-                val intentFilter = IntentFilter(LocationService.BROADCAST_NEW_LOCATION_DETECTED)
-                LocalBroadcastManager.getInstance(requireContext())
-                    .registerReceiver(myReceiver, intentFilter)
-
-
+        val intentFilter = IntentFilter(LocationService.BROADCAST_NEW_LOCATION_DETECTED)
+        LocalBroadcastManager.getInstance(requireContext())
+            .registerReceiver(myReceiver, intentFilter)
 
 
     }
+
     //    override fun onPause() {
 //        super.onPause()
 //        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(myReceiver)
@@ -230,9 +242,9 @@ class MapFragment : Fragment() {
     private fun startCurrentLocationService() {
         val startIntent = Intent(activity, LocationService::class.java)
         startIntent.action = "hello"
-        startIntent.putExtra(DETAIL_OBJECT ,getDetailToUser())
-        startForegroundService(requireContext() , startIntent)
-        Log.d("gsdfrgrs" , "DSFfsd")
+        startIntent.putExtra(DETAIL_OBJECT, getDetailToUser())
+        startForegroundService(requireContext(), startIntent)
+
     }
 
     private fun shutDownReceiver() {
@@ -240,7 +252,7 @@ class MapFragment : Fragment() {
             activity?.unregisterReceiver(myReceiver)
             //Register or UnRegister your broadcast receiver here
         } catch (e: IllegalArgumentException) {
-            Log.d("Dsfdsffdsd" , "DSfdsfsd " + e.cause)
+
         }
     }
 
@@ -248,18 +260,15 @@ class MapFragment : Fragment() {
         towingMapUserLocation = TowingMap(mapFragment, requireContext().applicationContext)
     }
 
-
+    //get new towing request from DB
     private val getNewTowingRequest = object : FireStoreHandler.UserRequestDetail {
         override fun getTowingDetailCallBack(detail: UserDetailForTowing) {
-            Log.d(
-                "asfdfsdfsd",
-                "DSFfdsfds" + binding.mapSwitchLocation.isChecked + " " + !towingIsBusy
-            )
+
             if (!binding.mapBTNArrived.isVisible && binding.mapSwitchLocation.isChecked) {
                 userDetail = detail
                 towingIsBusy = true
-                Log.d("FDSfsdsfdfdasd", "Current data: " + detail)
-                if(activity?.isFinishing == false) {
+
+                if (activity?.isFinishing == false) {
                     showTowingDialog()
 
                     insertDetailToPopUp(detail)
@@ -267,8 +276,6 @@ class MapFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
 
@@ -300,7 +307,7 @@ class MapFragment : Fragment() {
             binding.mapBTNArrived.visibility = View.VISIBLE
             getTowingDetail()
             openNavigation()
-
+            dialog.dismiss()
 
         }
         dialog.setOnCancelListener(cancelDialogPressed)
@@ -309,10 +316,13 @@ class MapFragment : Fragment() {
 
     private fun sendObjectToService() {
         val startIntent = Intent(activity, LocationService::class.java)
+        val detailUser = getDetailToUser()
         startIntent.action = LocationService.ACCEPT_TOWING
-        startIntent.putExtra(DETAIL_OBJECT ,getDetailToUser())
-        startForegroundService(requireContext() , startIntent)
-        Log.d("gsdfrgrs" , "DSFfsd")
+        startIntent.putExtra(DETAIL_OBJECT, detailUser)
+        startForegroundService(requireContext(), startIntent)
+
+
+        saveObjectShardPerf(detailUser)
 
 
     }
@@ -330,9 +340,8 @@ class MapFragment : Fragment() {
         fireStoreHandler.getTowingProfile(object : FireStoreHandler.TowingDetailCallBack {
             override fun towingDetailCallBack(towingDetail: User) {
                 towingDetailProfile = towingDetail
-                inMiddleOfDrive()
                 sendObjectToService()
-                Log.d("sfadsadsa" , "SAdsasda")
+
             }
 
         })
@@ -350,6 +359,8 @@ class MapFragment : Fragment() {
     private fun insertDetailToPopUp(userDetailForTowing: UserDetailForTowing) {
 
         popUpBinding.popUpTXTEmail.text = userDetailForTowing.name
+        popUpBinding.popUpTXTCompany.text = userDetailForTowing.companyCar
+        popUpBinding.popUpTXTModel.text = userDetailForTowing.modeCar
         popUpMap.setLocationOnMap(userDetailForTowing.latitude, userDetailForTowing.longitude)
         if (userDetailForTowing.imageUri?.isEmpty() == false) {
             Picasso.get()
@@ -372,19 +383,22 @@ class MapFragment : Fragment() {
 
     private fun initMapSwitchListener() {
         binding.mapSwitchLocation.setOnCheckedChangeListener { buttonView, isChecked ->
-          //  Log.d("FDSsddf" , " dsadasdas" + LocationService.isServiceRunningInForeground(requireContext() , LocationService::class.java))
-            val serviceAlreadyRun = LocationService.isServiceRunningInForeground(requireContext() , LocationService::class.java)
+
+            val serviceAlreadyRun = LocationService.isServiceRunningInForeground(
+                requireContext(),
+                LocationService::class.java
+            )
             if (isChecked) {
 
                 if (checkForMissingPermission() == null && !serviceAlreadyRun) {
-                    Log.d("sadsadsad" , " dsadasdas")
+
                     startServiceLocation()
-                } else if(checkForMissingPermission() != null) {
+                } else if (checkForMissingPermission() != null) {
                     openPermissionActivity()
                 }
             } else {
 
-               clearSharedPref()
+                clearSharedPref()
                 towingDetailProfile = null
                 stopServiceLocation()
             }
@@ -404,6 +418,7 @@ class MapFragment : Fragment() {
     }
 
 
+
     private fun openPermissionSettings() {
         val intent = Intent(
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
@@ -414,6 +429,7 @@ class MapFragment : Fragment() {
 
 
     }
+
 
 
     private fun checkForMissingPermission(): String? {

@@ -9,10 +9,9 @@ import java.util.*
 class AddressesUtils {
 
 
-
     companion object {
 
-        fun getAddress(latLng: LatLng , context:Context): String {
+        fun getAddress(latLng: LatLng, context: Context): String {
             val geocoder = Geocoder(context, Locale.getDefault())
             val address: Address?
             var addressText = ""
@@ -24,7 +23,7 @@ class AddressesUtils {
                 if (addresses.isNotEmpty()) {
                     address = addresses[0]
                     addressText = address.getAddressLine(0)
-                } else{
+                } else {
                     addressText = "its not appear"
                 }
             }
@@ -32,9 +31,9 @@ class AddressesUtils {
         }
 
 
-        fun getCountry(latLng:LatLng  , context: Context) {
+        fun getCountry(latLng: LatLng, context: Context) {
 
-            fun getAddress(latLng: LatLng , context:Context): String {
+            fun getAddress(latLng: LatLng, context: Context): String {
                 val geocoder = Geocoder(context, Locale.getDefault())
                 val co: Address?
                 var countyName = ""
@@ -46,7 +45,7 @@ class AddressesUtils {
                     if (country.isNotEmpty()) {
                         co = country[0]
                         countyName = co.countryName
-                    } else{
+                    } else {
                         countyName = "its not appear"
                     }
                 }

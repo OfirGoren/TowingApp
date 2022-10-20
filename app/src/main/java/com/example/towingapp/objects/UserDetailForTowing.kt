@@ -9,14 +9,17 @@ data class UserDetailForTowing(
     var imageUri:String? = "",
     var latitude: Double = 0.0,
     var longitude: Double = 0.0,
+    var companyCar:String? = "",
+    var modeCar:String? = "",
     var Userid:String? = null,
-    var requestId:String? = null
-):Parcelable {
+    var requestId:String? = null):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readDouble(),
         parcel.readDouble(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     ) {
@@ -27,6 +30,8 @@ data class UserDetailForTowing(
         parcel.writeString(imageUri)
         parcel.writeDouble(latitude)
         parcel.writeDouble(longitude)
+        parcel.writeString(companyCar)
+        parcel.writeString(modeCar)
         parcel.writeString(Userid)
         parcel.writeString(requestId)
     }
@@ -45,3 +50,4 @@ data class UserDetailForTowing(
         }
     }
 }
+

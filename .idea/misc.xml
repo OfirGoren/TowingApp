@@ -4,10 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/drawable/switch_selector.xml" value="0.2545" />
-        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_location.xml" value="0.24027362120564344" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_location.xml" value="0.2" />
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_main.xml" value="0.2234375" />
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/activity_towing.xml" value="0.20906370243693886" />
-        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_login_fragmeent.xml" value="0.19" />
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_map.xml" value="0.25" />
         <entry key="..\:/Users/ofiii/AndroidStudioProjects/TowingApp/app/src/main/res/layout/fragment_sign_up.xml" value="0.22" />

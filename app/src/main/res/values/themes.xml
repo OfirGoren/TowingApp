@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.TowingApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -12,6 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="myThemeActivity" parent="Theme.TowingApp">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
     </style>
 
     <style name="MyBtnCustom" parent="Widget.MaterialComponents.Button.Icon">
@@ -44,7 +51,7 @@
         <item name="colorAccent">@color/orange</item>
 
     </style>
-    <style name="myProgressBar">
+    <style name="OrangeColorView">
         <item name="colorAccent">@color/orange</item> <!-- Whatever color you want-->
     </style>
 
@@ -91,7 +98,7 @@
     </style>
 
     <style name="AlertDialog" parent="Base.Theme.AppCompat.Dialog.Alert">
-        <item name="android:windowBackground">#808080</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
     <style name="styleText" parent="TextAppearance.AppCompat" >
         <item name="android:textColor">@color/orange</item>
@@ -101,5 +108,18 @@
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="MyButtonTransparent" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceRounded</item>
+        <item name="background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="strokeColor">@color/orange</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/orange</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconPadding">0dp</item>
     </style>
 </resources>

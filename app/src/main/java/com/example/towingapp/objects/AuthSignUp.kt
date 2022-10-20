@@ -12,9 +12,6 @@ class AuthSignUp {
     private val auth: FirebaseAuth = Firebase.auth
 
 
-
-
-
     interface RegisterNewUserCallBack {
         fun isSucceeded(isNewUser: Boolean?)
         fun isFailed()
@@ -47,7 +44,7 @@ class AuthSignUp {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(activity) { task ->
                 if (!task.isSuccessful) {
-                    Log.d("dsgfdsfdfgdgfdfsdfs", "FSdsfdsfd")
+
                     try {
                         throw task.exception!!
                     } catch (weakPassword: FirebaseAuthWeakPasswordException) {
@@ -56,7 +53,7 @@ class AuthSignUp {
                     catch (malformedEmail: FirebaseAuthInvalidCredentialsException) {
 
                     } catch (existEmail: FirebaseAuthUserCollisionException) {
-                        Log.d("dsgfdsfdfgdgfdfsdfs", "FSdsfdsfd" + existEmail.email)
+
                         newUserCallBack.isSucceeded(false)
 
                     } catch (e: Exception) {
@@ -71,14 +68,13 @@ class AuthSignUp {
 
     }
 
-    fun sendEmailVerification(newUserCallBack: RegisterNewUserCallBack) {
+    private fun sendEmailVerification(newUserCallBack: RegisterNewUserCallBack) {
         auth.currentUser?.sendEmailVerification()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 newUserCallBack.isSucceeded(true)
             }
         }
 
-        Log.d("dsgfdsfdfsdfs", "FSdsfdsfd")
 
     }
 

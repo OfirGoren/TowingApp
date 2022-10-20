@@ -25,6 +25,13 @@ class WelcomeFragment : Fragment() {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         clickListeners()
 
+        isUserStillLogIn()
+        return binding.root
+
+
+    }
+
+    private fun isUserStillLogIn() {
         val user = Firebase.auth.currentUser
 
         if (user != null) {
@@ -32,9 +39,6 @@ class WelcomeFragment : Fragment() {
         } else {
             // No user is signed in
         }
-        return binding.root
-
-
     }
 
     private fun openTowingActivity() {

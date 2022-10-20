@@ -34,12 +34,11 @@ class PopUpMap(mapFragment: SupportMapFragment, val context: Context) : OnMapRea
         val userSydney = LatLng(userLatitude, userLongitude)
 
         mMap?.clear()
-        mMap?.addMarker(
+        val marker = mMap?.addMarker(
             MarkerOptions()
                 .position(userSydney)
-                .title( AddressesUtils.getAddress(userSydney , context))
-        )
-
+                .title( AddressesUtils.getAddress(userSydney , context)))
+        marker?.showInfoWindow()
 
 
         mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(userSydney, 17.0f))

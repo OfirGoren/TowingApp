@@ -70,6 +70,35 @@
             android:textSize="17sp" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comapny:"
+            android:textAppearance="@style/styleText" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pop_up_TXT_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Company"
+            android:textColor="@color/gray"
+            android:textSize="17sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model:"
+            android:textAppearance="@style/styleText" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pop_up_TXT_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Model"
+            android:textColor="@color/gray"
+            android:textSize="17sp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/pop_up_BTN_accept"
             style="@style/MyBtnCustom"

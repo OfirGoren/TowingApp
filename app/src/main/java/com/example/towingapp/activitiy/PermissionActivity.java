@@ -54,7 +54,7 @@ public class PermissionActivity extends AppCompatActivity {
         LOCATION_ENABLE
     }
 
-    private ActivityLocationBinding binding ;
+    private ActivityLocationBinding binding;
     private STATE state = STATE.NA;
 
     @Override
@@ -97,7 +97,7 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     private void openTowingActivity() {
-        Intent intent =  new Intent(this, TowingActivity.class);
+        Intent intent = new Intent(this, TowingActivity.class);
         startActivity(intent);
         this.finish();
     }
@@ -121,7 +121,7 @@ public class PermissionActivity extends AppCompatActivity {
             binding.locationBTNNext.setVisibility(View.VISIBLE);
         } else if (state == STATE.NO_REGULAR_PERMISSION) {
             binding.locationLBLTitle.setText("Location permission");
-            binding.locationLBLContent.setText("Location permission is needed for core functionality.\nPlease Enable the app permission to access your location data");
+            binding.locationLBLContent.setText(R.string.location_permission_msg);
             binding.locationLBLProgress.setText("2/4");
             binding.locationBTNNext.setOnClickListener(v -> {
                 askForPermissions(checkForMissingPermission(this));
@@ -130,8 +130,8 @@ public class PermissionActivity extends AppCompatActivity {
             binding.locationBTNBack.setVisibility(View.VISIBLE);
             binding.locationBTNNext.setVisibility(View.VISIBLE);
         } else if (state == STATE.NO_BACKGROUND_PERMISSION) {
-            binding.locationLBLTitle.setText("Background location permission");
-            binding.locationLBLContent.setText("This app collects location data even when the app is closed or not in use.\nTo protect your privacy, the app stores only calculated indicators, like distance from home and never exact location.\nA notification is always displayed in the notifications bar when service is running.");
+            binding.locationLBLTitle.setText(R.string.background_location_msg);
+            binding.locationLBLContent.setText(R.string.Collects_Location_msg);
             binding.locationLBLProgress.setText("3/4");
             binding.locationBTNNext.setOnClickListener(v -> {
                 askForPermissions(checkForMissingPermission(this));
@@ -147,8 +147,7 @@ public class PermissionActivity extends AppCompatActivity {
             binding.locationBTNNext.setVisibility(View.INVISIBLE);
         } else if (state == STATE.LOCATION_SETTINGS_OK) {
             binding.locationLBLTitle.setText("");
-            binding.locationLBLContent.setText("Location services are running and all permissions have been granted.\n" +
-                    "You can now start recording.");
+            binding.locationLBLContent.setText("Location services are running and all permissions have been granted.\n You can now start.");
             binding.locationLBLProgress.setText("4/4");
             binding.locationBTNNext.setOnClickListener(v -> {
                 finish();
@@ -374,7 +373,7 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-       binding.locationBTNBack.setText("Close");
+        binding.locationBTNBack.setText("Close");
         binding.locationBTNBack.setOnClickListener(v -> onBackPressed());
     }
 

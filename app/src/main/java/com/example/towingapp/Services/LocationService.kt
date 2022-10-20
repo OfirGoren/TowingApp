@@ -27,8 +27,8 @@ class LocationService : Service() {
     private var lastShownNotificationId = -1
     private var fusedLocationHandler: FusedLocationHandler? = null
     private var isServiceRunningRightNow = false
-    private var towingDetail:UserDetailForTowing?  =null
-    private var fireStoreHandler:FireStoreHandler? = null
+    private var towingDetail: UserDetailForTowing? = null
+    private var fireStoreHandler: FireStoreHandler? = null
 
 
     companion object {
@@ -38,7 +38,7 @@ class LocationService : Service() {
         const val BROADCAST_NEW_LOCATION_DETECTED = "BROADCAST_NEW_LOCATION_DETECTED"
         const val ACCEPT_TOWING = "ACCEPT_TOWING"
         const val STOP_FOREGROUND_SERVICE = "STOP_FOREGROUND_SERVICE"
-       const val ARRIVED_TOWING = "ARRIVED_TOWING"
+        const val ARRIVED_TOWING = "ARRIVED_TOWING"
 
 
         fun isServiceRunningInForeground(context: Context, serviceClass: Class<*>): Boolean {
@@ -74,9 +74,6 @@ class LocationService : Service() {
         action?.let { ActionName ->
 
 
-
-
-
             if (ActionName == START_LOCATION_SERVICE) {
                 if (isServiceRunningRightNow) {
                     return START_STICKY
@@ -90,22 +87,22 @@ class LocationService : Service() {
 
             } else if (ActionName == STOP_LOCATION_SERVICE) {
                 fusedLocationHandler?.stopLocationUpdate()
-                Log.d("DGsgsf", "FDSfsdfd")
+
                 stopRecording()
                 stopUpdateLocation()
                 stopForeground(true)
                 stopSelf()
                 isServiceRunningRightNow = false
                 return START_NOT_STICKY
-            }else if(ActionName == ACCEPT_TOWING) {
+            } else if (ActionName == ACCEPT_TOWING) {
                 fireStoreHandler = FireStoreHandler()
-                Log.d("asdasdsaasdwq" , "DSFfdsfds ")
-                 towingDetail = intent.getParcelableExtra(MapFragment.DETAIL_OBJECT)
-                if(towingDetail != null) {
-                    Log.d("DFSdsffd" , "DSFfdsfds " + towingDetail )
+
+                towingDetail = intent.getParcelableExtra(MapFragment.DETAIL_OBJECT)
+                if (towingDetail != null) {
+
                 }
 
-            }else if(ActionName == ARRIVED_TOWING) {
+            } else if (ActionName == ARRIVED_TOWING) {
                 towingDetail = null
 
             }
@@ -130,24 +127,22 @@ class LocationService : Service() {
 
     }
 
+    // when there is an active towing location updated every 10 seconds
+    // also the tower location (for himself) is always updating on map
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult) {
             p0 ?: return
             for (location in p0.locations) {
                 if (location != null) {
 
-                    if(towingDetail != null) {
+                    if (towingDetail != null) {
                         towingDetail?.latitude = location.latitude
                         towingDetail?.longitude = location.longitude
                         fireStoreHandler?.sendDetailTowingToUser(towingDetail!!)
                     }
-
-
-                    Log.d("FDsfdsdsf", "SFdsa" + location.latitude + " " + location.longitude)
-
                     val intent = Intent(BROADCAST_NEW_LOCATION_DETECTED)
                     intent.putExtra("EXTRA_LOCATION", location)
-                  LocalBroadcastManager.getInstance(this@LocationService).sendBroadcast(intent)
+                    LocalBroadcastManager.getInstance(this@LocationService).sendBroadcast(intent)
 
                 }
             }
@@ -205,8 +200,8 @@ class LocationService : Service() {
         ) //Low importance prevent visual appearance for this notification channel on top
         notificationBuilder.setContentIntent(pendingIntent) // Open activity
             .setOngoing(true)
-            .setSmallIcon(R.drawable.ic_launcher_background)
-            .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round))
+            .setSmallIcon(R.drawable.tow_truck)
+            .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tow_truck))
             .setContentTitle(getString(R.string.AppInPprogress))
             .setContentText(getString(R.string.content))
         val notification: Notification = notificationBuilder.build()

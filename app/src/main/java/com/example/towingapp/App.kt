@@ -5,11 +5,11 @@ import com.example.towingapp.Utils.Addresses
 import com.example.towingapp.Utils.AddressesUtils
 import com.example.towingapp.Utils.SharedPref
 
-class App:Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-       SharedPref.init(this)
+        SharedPref.init(this)
         Addresses.init(this)
     }
 }

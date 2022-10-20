@@ -7,28 +7,28 @@ import es.dmoral.toasty.Toasty
 class ToastyUtils(private val context: Context) {
 
 
+    fun setLocationToasty(gravity: Int, x: Int, y: Int) {
 
-  fun  setLocationToasty(gravity:Int, x:Int , y:Int) {
 
-
-      Toasty.Config.getInstance()
-          .setGravity(gravity , x , y).apply()
+        Toasty.Config.getInstance()
+            .setGravity(gravity, x, y).apply()
 
 
     }
 
-    fun toastySuccess(msg:String) {
+    fun toastySuccess(msg: String) {
         Toasty.success(context, msg, Toast.LENGTH_SHORT, true).show()
     }
 
-    fun toastyError(msg:String) {
+    fun toastyError(msg: String) {
         Toasty.error(context, msg, Toast.LENGTH_SHORT, true).show()
     }
 
-    fun toastyWarning(msg:String) {
+    fun toastyWarning(msg: String) {
         Toasty.warning(context, msg, Toast.LENGTH_SHORT, true).show()
     }
-    fun toastyInfo(msg:String) {
+
+    fun toastyInfo(msg: String) {
         Toasty.info(context, msg, Toast.LENGTH_SHORT, true).show();
     }
 }

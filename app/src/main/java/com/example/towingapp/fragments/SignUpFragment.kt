@@ -85,7 +85,6 @@ class SignUpFragment : Fragment() {
     }
 
 
-
     private fun handlerEmailVerification() {
         authSignUp.isEmailVerified(object : AuthSignUp.LogInCallBack {
             override fun isSucceeded() {
@@ -177,7 +176,7 @@ class SignUpFragment : Fragment() {
     private val registerNewUserCallBack = object : AuthSignUp.RegisterNewUserCallBack {
 
         override fun isSucceeded(isNewUser: Boolean?) {
-            Log.d("dsffdsfds", "Ddfsdsfsd")
+
             visibilityGoneBtn(View.VISIBLE)
             // succeed sign up
             if (isNewUser == true) {
@@ -202,7 +201,7 @@ class SignUpFragment : Fragment() {
                 // show msg to user
                 // updateEmailErrorMsg()
 
-               // showMsgDialogToUser()
+                // showMsgDialogToUser()
                 // stop progress bar
 
                 binding.signUpPRB.visibility = View.INVISIBLE

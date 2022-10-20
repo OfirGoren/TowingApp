@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.Marker
 
 class TowingMap(mapFragment: SupportMapFragment, val context: Context) : OnMapReadyCallback,
     FusedLocationHandler.GetLastLocationCallBack {
-    private  var mMap: GoogleMap? = null
+    private var mMap: GoogleMap? = null
     private var marker: ArrayList<Marker>
     private var fusedLocationHandler: FusedLocationHandler
     private var currentLat: Double? = null
@@ -34,7 +34,6 @@ class TowingMap(mapFragment: SupportMapFragment, val context: Context) : OnMapRe
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        Log.d("SDFsdf" , "SDFfdssd " + googleMap)
 
 
         // Add a marker in Sydney and move the camera
@@ -42,13 +41,13 @@ class TowingMap(mapFragment: SupportMapFragment, val context: Context) : OnMapRe
 //        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney ,18.0f))
     }
 
-   fun funInitMap() {
-       mapFrag.getMapAsync(this)
-   }
+    fun funInitMap() {
+        mapFrag.getMapAsync(this)
+    }
 
     private fun updateCurrentLocationOnMap(latitude: Double, longitude: Double) {
         val sydney = LatLng(latitude, longitude)
-        Log.d("FDSds" , "DFSdfsfds" + mMap)
+
         mMap?.clear()
         mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14.0f))
     }
@@ -63,13 +62,10 @@ class TowingMap(mapFragment: SupportMapFragment, val context: Context) : OnMapRe
     }
 
 
-
 //    fun updateMapWithCurrentLocation() {
 //        fusedLocationHandler.getLastLocation(locationCallback)
 //
 //    }
-
-
 
 
 }

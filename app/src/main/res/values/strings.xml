@@ -23,4 +23,8 @@
     <string name="service">Service</string>
     <string name="log_is_failed_try_again">Log Is Failed Try Again</string>
     <string name="needToVerify">You Need To Verfiy The Email</string>
+    <string name="font_family_medium">sans-serif-medium</string>
+    <string name="Collects_Location_msg">This app collects location data even when the app is closed or not in use.\nTo protect your privacy, the app stores only calculated indicators, like distance from home and never exact location.\nA notification is always displayed in the notifications bar when service is running.</string>
+    <string name="background_location_msg">Background location permission</string>
+    <string name="location_permission_msg">Location permission is needed for core functionality.\nPlease Enable the app permission to access your location data</string>
 </resources>

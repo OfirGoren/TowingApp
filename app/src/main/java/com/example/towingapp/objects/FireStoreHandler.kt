@@ -21,7 +21,7 @@ class FireStoreHandler {
 
     companion object {
         private const val TOWING_USERS = "TowingUsers"
-         private const val REQUEST_TOWING = "RequestTowing"
+        private const val REQUEST_TOWING = "RequestTowing"
         private const val TOWING = "Towing"
         private const val USERS = "users"
     }
@@ -32,17 +32,17 @@ class FireStoreHandler {
     }
 
     interface UserRequestDetail {
-     fun  getTowingDetailCallBack(detail:UserDetailForTowing)
+        fun getTowingDetailCallBack(detail: UserDetailForTowing)
     }
 
     interface TowingDetailCallBack {
-        fun  towingDetailCallBack(towingDetail:User)
+        fun towingDetailCallBack(towingDetail: User)
     }
 
 
     fun saveUser(user: User, userInfoCallBack: UserInfoCallBack) {
 
-        Log.d("FDsfdsdfsfd" , "DFSsfdsfdsfd" + user)
+
         user.id?.let {
             db.collection(TOWING_USERS).document(it)
                 .set(user)
@@ -58,72 +58,65 @@ class FireStoreHandler {
 
     }
 
-    fun listenerUserTowingRequest (userRequestDetail :UserRequestDetail) {
-
-//       val whenDestroyAppStr = SharedPref.getInstance().getString(MapFragment.DESTROY_APP , "");
-//        var whenDestroyApp  = 0.0
-//        if (whenDestroyAppStr.isNotEmpty()) {
-//           whenDestroyApp = whenDestroyAppStr.toDouble()
-//        }
+    fun listenerUserTowingRequest(userRequestDetail: UserRequestDetail) {
 
         val timeMill = System.currentTimeMillis()
 
-        Log.d("1111111111111", "Listen failed.")
+
         val docRef = db.collection(REQUEST_TOWING)
-         registration  = docRef.addSnapshotListener { snapshot, e ->
+        registration = docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.d("TAG", "Listen failed.", e)
                 return@addSnapshotListener
             }
-
             if (snapshot != null) {
 
-                    Log.d("222222222222222", "Listen failed.")
-                    val userDetailForTowing = UserDetailForTowing()
-                    for (snap in snapshot.documentChanges) {
+                val userDetailForTowing = UserDetailForTowing()
+                for (snap in snapshot.documentChanges) {
 
-                        val userDetail = snap.document.toObject(UserDetailForTowing::class.java);
-                        val timeWasTowingRequest = userDetail.requestId?.toLong() ?:0.0.toLong()
-                            if(timeMill < timeWasTowingRequest) {
+                    val userDetail = snap.document.toObject(UserDetailForTowing::class.java);
+                    val timeWasTowingRequest = userDetail.requestId?.toLong() ?: 0.0.toLong()
+                    if (timeMill < timeWasTowingRequest) {
 
-                                userDetailForTowing.name = userDetail.name
-                                userDetailForTowing.imageUri = userDetail.imageUri
-                                userDetailForTowing.latitude = userDetail.latitude
-                                userDetailForTowing.longitude = userDetail.longitude
-                                userDetailForTowing.Userid = userDetail.Userid
-                                userDetailForTowing.requestId = userDetail.requestId
-                                userRequestDetail.getTowingDetailCallBack((userDetailForTowing))
+                        userDetailForTowing.name = userDetail.name
+                        userDetailForTowing.imageUri = userDetail.imageUri
+                        userDetailForTowing.latitude = userDetail.latitude
+                        userDetailForTowing.longitude = userDetail.longitude
+                        userDetailForTowing.companyCar = userDetail.companyCar
+                        userDetailForTowing.modeCar = userDetail.modeCar
+                        userDetailForTowing.Userid = userDetail.Userid
+                        userDetailForTowing.requestId = userDetail.requestId
+                        userRequestDetail.getTowingDetailCallBack((userDetailForTowing))
 
-                            }
                     }
-
-
+                }
 
 
             } else {
-             //   Log.d(TAG, "Current data: null")
+                //   Log.d(TAG, "Current data: null")
             }
         }
 
 
-
     }
+
     fun shoutDownListenerUserTowingRequest() {
         registration?.remove()
     }
 
-    fun getTowingProfile(towingDetailCallBack:TowingDetailCallBack ) {
+    fun getTowingProfile(towingDetailCallBack: TowingDetailCallBack) {
 
-        auth.currentUser?.let { db.collection(TOWING_USERS).document(it.uid)
-            .get()
-            .addOnSuccessListener { documentSnapshot->
-                val towingDetail = documentSnapshot.toObject<User>()
+        auth.currentUser?.let {
+            db.collection(TOWING_USERS).document(it.uid)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val towingDetail = documentSnapshot.toObject<User>()
 
-                if(towingDetail != null) {
-                    towingDetailCallBack.towingDetailCallBack(towingDetail)
+                    if (towingDetail != null) {
+                        towingDetailCallBack.towingDetailCallBack(towingDetail)
+                    }
+
                 }
-
-            }
 
 
         }
@@ -131,7 +124,7 @@ class FireStoreHandler {
 
     fun sendDetailTowingToUser(towingProfileWithLocation: UserDetailForTowing) {
 
-        Log.d("gdfgfd" , "DFSsfdsfdsfd" )
+
         towingProfileWithLocation.Userid?.let {
             towingProfileWithLocation.requestId?.let { it1 ->
                 db.collection(USERS).document(it).collection(TOWING).document(it1)
@@ -149,14 +142,13 @@ class FireStoreHandler {
     }
 
     fun deleteTowingFromUser(towingDetailProfile: UserDetailForTowing?) {
-       val userIDoc = towingDetailProfile?.Userid ?: "null"
+        val userIDoc = towingDetailProfile?.Userid ?: "null"
         val requestId = towingDetailProfile?.requestId ?: "null"
         val productIdRef: DocumentReference =
             db.collection(USERS).document(userIDoc).collection(TOWING).document(requestId)
-              productIdRef.delete().addOnSuccessListener {
+        productIdRef.delete().addOnSuccessListener {
 
-              }
-
+        }
 
 
     }
