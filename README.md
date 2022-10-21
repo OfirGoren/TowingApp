@@ -6,7 +6,7 @@
 DeliveryApp is designed to provide a fast delivery service in Israel for packages up to 10 Kg. Each user can log in to a customer account and place an order, or log in to a courier's account and take deliveries.
 
 
-<img src="https://media.giphy.com/media/1g2JyW7p6mtZc6bOEY/giphy.gif" alt="drawing" width="300" hspace="10"/>
+<img src="https://media.giphy.com/media/8Ad4J9QXRM4bAYvZsp/giphy.gif" alt="drawing" width="300" hspace="10"/>
 
 
 
@@ -25,33 +25,16 @@ DeliveryApp is designed to provide a fast delivery service in Israel for package
 
 ## Screenshots:
 #### Customer side:
-<img src="https://user-images.githubusercontent.com/68231208/196643842-8780e4f3-b682-49d2-8b9d-08a12be36a33.PNG" alt="drawing" width="200" hspace="10"/> <img src="https://user-images.githubusercontent.com/68231208/196644196-530a1e1e-afd1-457e-90e0-23eb432c135b.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196644601-d0555042-a123-4490-bb04-d6c996332e3f.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196644923-3ac973d0-7e9a-47f1-8877-e05c7427e091.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196646089-0c516b39-6399-496b-b8cf-0225dc0e6acf.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196646297-b5cf56fa-704a-4847-b271-798207c5f4ae.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196647305-3e73a8b9-a9ca-4f43-a87c-86d43319536d.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196647411-551c60d8-f1d5-492c-8fc4-237ecc0dc7e7.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196648587-00a77ffd-4a72-4607-b5e2-6ea32ee288d3.PNG" alt="drawing" width="200" hspace="10">
-#### Curier side:
-<img src="https://user-images.githubusercontent.com/68231208/196649259-dae86d7a-96f1-4be8-9f5c-700445bd128f.PNG" alt="drawing" width="200" hspace="10"><img src="https://user-images.githubusercontent.com/68231208/196649357-9b0ba5bd-8907-4275-befe-302e85fc5d72.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196649994-44c3cd7d-1b6b-4608-ad1f-1e13e43bd2c1.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196650106-0ccfe0bc-ee56-4fec-8efa-727d13ecc997.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196650827-5516f4b9-f781-4e62-b0d3-83f1ff29482c.PNG" alt="drawing" width="200" hspace="10">
-<img src="https://user-images.githubusercontent.com/68231208/196650947-d280a83b-eb3f-4914-82ff-0901240fdb2d.PNG" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197196094-dd2d3a28-4148-4f63-8c46-ecd997c6d3be.jpeg" alt="drawing" width="200" hspace="10"/> <img src="https://user-images.githubusercontent.com/68231208/197196259-97de479a-c5a3-4181-9da7-5cb661f155b9.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197196668-2945010a-0e12-4322-993e-0a5a27a78c60.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197196588-c2f086ec-0181-450a-ac0a-eb8a4ecb44c5.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197196941-41aa26f3-ec5c-4f5f-a4c0-4d5640410dee.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197197234-b0e5eb10-e33f-43ba-acda-f5bba6b64969.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197197516-0ec0dd0a-038a-4084-9e73-b1673446eecf.jpeg" alt="drawing" width="200" hspace="10">
+<img src="https://user-images.githubusercontent.com/68231208/197197606-2f19bfd6-ac80-464a-b3ac-87ba4c6d7521.jpeg" alt="drawing" width="200" hspace="10">
 
 
 
-## Gifs:
-
-<img src="https://user-images.githubusercontent.com/68231208/196662694-860163a4-7e0d-403a-a41e-281337b95425.gif" alt="drawing" width="200" hspace="10"/> &emsp;
-<img src="https://user-images.githubusercontent.com/68231208/196665403-ce45b95e-4f74-4320-bd3b-42cfeb7ae9ee.gif" alt="drawing" width="200" hspace="10">
-&emsp;
-<img src="https://user-images.githubusercontent.com/68231208/196689648-bdd750c9-1397-481a-808f-1123e0a47f93.gif" alt="drawing" width="200">
-&emsp;
-<img src="https://user-images.githubusercontent.com/68231208/196706004-39a72466-fe62-474c-87ea-12684f9fbd18.gif" alt="drawing" width="200">
-&emsp;
-<img src="https://user-images.githubusercontent.com/68231208/196666079-a2a7a023-7d6d-41a1-b894-9af3a4f77965.gif" alt="drawing" width="650">
 
 
 ## Permissions 
