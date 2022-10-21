@@ -3,10 +3,10 @@
 
 ## Description:
 
-DeliveryApp is designed to provide a fast delivery service in Israel for packages up to 10 Kg. Each user can log in to a customer account and place an order, or log in to a courier's account and take deliveries.
+TowingApp It is designed to provide towing services quickly and efficiently, as soon as a customer orders towing services from the DashboardWarningLightApp  <a href="https://github.com/OfirGoren/DashboardWarningLight">Go to Project</a>, a request is sent to any tow truck that is available to accept the drive and it will pop up to the screen the details of the service requester and his location, the tow truck can choose to ignore the drive or take it, as soon as he takes the drive his location will be sent Every few seconds for the person who made the call, as soon as the tow arrives at its destination, he will press the arrived button and the communication will stop.
 
 
-<img src="https://media.giphy.com/media/8Ad4J9QXRM4bAYvZsp/giphy.gif" alt="drawing" width="300" hspace="10"/>
+<img src="https://media.giphy.com/media/lXiRoyqj7vnHfBeBG/giphy.gif" alt="drawing" width="300" hspace="10"/>
 
 
 
@@ -15,13 +15,10 @@ DeliveryApp is designed to provide a fast delivery service in Israel for package
 ## Highlight features:
 ### Customer side:
 
-* Finds your location on the map and give the exact address for you.
-* Option to place an order for shipments large and small.
-* See your entire order history.
+* send location every few seconds to service requester also when the app is terminated.
+* arrived button shut down the connection between service requester and the towing.
+* when tow truck already in the middle of rescue drivee will not get a new requests.
 
-### Curier side:
-* Open Google Map navigation or Waze With the route to the pickup address and destination address at the touch of a button.
-* Option to call the customer quickly and efficiently.
 
 ## Screenshots:
 #### Customer side:
@@ -35,10 +32,9 @@ DeliveryApp is designed to provide a fast delivery service in Israel for package
 
 
 
-
-
 ## Permissions 
 * Location access.
+* Foreground service access
 * Read Storage access.
 
 ### License - Ⓒ free to use, all right belong to Ofir Goren.
